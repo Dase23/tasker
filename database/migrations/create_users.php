@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDescsTable extends Migration
+class CreateUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateDescsTable extends Migration
      */
     public function up()
     {
-         Schema::create('decsc', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->string('name');
-            $table->integer('userId');
-            $table->foreign('userId')->references('id')->on('users');
-        });
+      Schema::create('users', function (Blueprint $table) {
+          $table->increments('id')->unique();
+          $table->string('login');
+          $table->string('password');
+      });
     }
 
     /**
